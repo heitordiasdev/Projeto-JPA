@@ -20,6 +20,8 @@ public class Main {
 //
 //        System.out.println(produtoDAO1.getById(1l));
 //        System.out.println(produtoDAO1.findByName("Peito de Frango"));
-        System.out.println(produtoDAO1.findByNameLike("Ave"));
+//        System.out.println(produtoDAO1.findByNameLike("Ave"));
+
+        System.out.println(produtoDAO1.delete(4L));
     }
 }

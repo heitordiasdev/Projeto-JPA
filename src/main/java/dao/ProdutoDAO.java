@@ -4,7 +4,6 @@ import domain.Produto;
 import persistence.JPAUtil;
 
 import javax.persistence.Query;
-import javax.transaction.Transactional;
 import java.math.BigDecimal;
 import java.util.List;
 
@@ -64,6 +63,13 @@ public class ProdutoDAO {
                 .createNamedQuery("produto.byNameLike");
         query.setParameter("nome", "%"+nome+"%");
         return query.getResultList();
+    }
+
+    public String delete(Long id){
+        Produto produtoParaExcluir = getById(id);
+        jpaUtil.getEntityManager().remove(produtoParaExcluir);
+        jpaUtil.getEntityManager().getTransaction().commit();
+        return produtoParaExcluir.getNome().concat("Excluido com sucesso");
     }
 
 }
